@@ -1,0 +1,59 @@
+<!-- Insertion de texte brut ou de html à l'aide du binding
+ Modification des propriétés du modèle de façon asynchrone
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 1-06</title>
+ <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+ <div id="app">
+  <p v-text="'Il est exactement ' + time"></p>
+  <ul :style="style">
+   <li v-text="'Prénom : ' + person.firstname"></li>
+   <li v-text="'Nom : ' + person.lastname"></li>
+   <li v-text="'Âge : ' + person.age"></li>
+   <li>Couleur préférée : <span v-html="color"></span></li>
+  </ul>
+  <img :src="painting.src" :alt="painting.credits" :style="painting.style">
+  <figcaption>{{painting.credits}}</figcaption>
+</div>
+<script> 
+ const app = Vue.createApp({
+  data() {
+   return {
+    person: {
+     firstname: 'John',
+     lastname: 'Doe',
+     age: 0
+    },
+    style: 'list-style: none;',
+    color:'<font color="#FFD800"><em>Jaune</em></font>',
+    painting: {
+     src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Dame_in_Gelb_Max_Kurzweil_1907.jpg/1280px-Dame_in_Gelb_Max_Kurzweil_1907.jpg',
+     credits: 'Femme en jaune. Max Kurzweil, 1907',
+     style: 'width: 400px; height: auto',
+    },
+    time: 0
+   }
+  }
+ });
+const vm = app.mount('#app');
+
+setTimeout(() => { vm.person.age = 35 }, 3000);
+
+function timer() {
+  var d = new Date();
+  vm.time = d.toLocaleTimeString();
+}
+setInterval(timer, 1000);
+
+</script>
+</body>
+</html>
