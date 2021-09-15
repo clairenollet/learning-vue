@@ -1,4 +1,4 @@
-<!-- Les interpolations -->
+<!-- Utiliser des fonctions dans une interpolation--> -->
 
 
 <!DOCTYPE html>
@@ -7,19 +7,20 @@
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Projet 1-01</title>
+ <title>Projet 1-02</title>
  <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
  <div id="app">
-  <h2>{{titre}}{{hour}}</h2>
+  <h2>{{titre.split('').reverse().join('')}}<h2>
+  <p>{{sousTitre.toUpperCase()}}</p>
 </div>
 <script> 
  const app = Vue.createApp({
   data(){
    return {
-    titre: 'Il est exactement : ',
-    hour: new Date().toLocaleTimeString()
+    titre: 'Ma première application Vue',
+    sousTitre: '... en trois minutes chrono !'
    }
   }
  });

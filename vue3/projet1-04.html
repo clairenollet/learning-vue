@@ -1,0 +1,42 @@
+<!-- Propriétés calculées
+
+Le code des propriétés calculées n'est réévalué que si les dépendances ont changé.
+Ici, date.
+Il est donc moins consommateur que le même code défini directement dans le modèle. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 1-04</title>
+ <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+ <div id="app">
+  <ul>
+   <li id="fr">Heure FR : {{frTime}}</li>
+   <li id="us">Heure US : {{usTime}}</li>
+  </ul>
+</div>
+<script> 
+ const app = Vue.createApp({
+  data() {
+   return {
+    date: new Date()
+   }
+  },
+  computed: {
+   frTime() {
+    return this.date.toLocaleTimeString('fr-FR')
+   },
+   usTime() {
+    return this.date.toLocaleTimeString('en-US')
+   }
+  }
+ });
+ app.mount('#app');
+</script>
+</body>
+</html>
