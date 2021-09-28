@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Squelette</title>
+ <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+ <div id="app">
+ <section>
+  <input type="text" v-model="text1" v-on:keyup="recopie">
+  <input type="text" v-bind:value="text2">
+ </section>
+ <br>
+ <section>
+  <fieldset>
+  <legend>Cochez les cases des langages que vous connaissez</legend>
+  <input type="checkbox" v-model="checkbox" value="HTML" id="html">
+  <label for="html">HTML</label>
+  <input type="checkbox" v-model="checkbox" value="CSS" id="css">
+  <label for="css">CSS</label>
+  <input type="checkbox" v-model="checkbox" value="JavaScript" id="javascript">
+  <label for="javascript">JavaScript</label>
+  </fieldset>
+  <p>Cases cochées : {{checkbox}}</p>
+ </section>
+  <section>
+  <fieldset>
+  <legend>Quel est votre langage préféré ?</legend>
+  <input type="radio" v-model="radio" value="HTML" id="html">
+  <label for="html">HTML</label>
+  <input type="radio" v-model="radio" value="CSS" id="css">
+  <label for="css">CSS</label>
+  <input type="radio" v-model="radio" value="JavaScript" id="javascript">
+  <label for="javascript">JavaScript</label>
+  </fieldset>
+  <p>Langage préféré : {{radio}}</p>
+ </section>
+</div>
+<script> 
+ const app = Vue.createApp({
+  data() {
+   return {
+    text1: '',
+    text2: '',
+    checkbox: [],
+    radio: ''
+   }
+ },
+  methods: {
+    recopie() {
+     this.text2 = this.text1.toUpperCase();
+    }
+  }
+ });
+ app.mount('#app');
+</script>
+</body>
+</html>
