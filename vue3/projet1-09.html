@@ -1,0 +1,40 @@
+<!-- Appel d'une même méthode avec différents arguments -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 1-09</title>
+ <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+ <div id="app">
+  <p>Nombre de clics sur le bouton : {{counter}}</p>
+  <button @click="counter++">Incrémenter le compteur</button>
+  <br><br>
+  <fieldset>
+   <legend>Renseignez votre prénom</legend>
+   <input type="text" v-model="firstname">
+   <button @click="greet('Bonjour')">Greet v1</button>
+   <button @click="greet('Hello')">Greet v2</button>
+  </fieldset>
+</div>
+<script>
+ const app = Vue.createApp({
+  data() {
+   return {
+    counter: 0
+   }
+  },
+  methods: {
+   greet(greeter) {
+    window.alert(greeter + ' ' + this.firstname);
+   }
+  }
+ });
+ app.mount('#app');
+</script>
+</body>
+</html>

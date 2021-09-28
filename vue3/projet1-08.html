@@ -1,10 +1,12 @@
+<!-- v-bind et v-model pour un rendu interactif -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Squelette</title>
+ <title>Projet 1-08</title>
  <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
@@ -17,26 +19,26 @@
  <section>
   <fieldset>
   <legend>Cochez les cases des langages que vous connaissez</legend>
-  <input type="checkbox" v-model="checkbox" value="HTML" id="html">
+  <input type="checkbox" v-model="knownLang" value="HTML" id="html">
   <label for="html">HTML</label>
-  <input type="checkbox" v-model="checkbox" value="CSS" id="css">
+  <input type="checkbox" v-model="knownLang" value="CSS" id="css">
   <label for="css">CSS</label>
-  <input type="checkbox" v-model="checkbox" value="JavaScript" id="javascript">
+  <input type="checkbox" v-model="knownLang" value="JavaScript" id="javascript">
   <label for="javascript">JavaScript</label>
   </fieldset>
-  <p>Cases cochées : {{checkbox}}</p>
+  <p>Cases cochées : {{knownLang}}</p>
  </section>
   <section>
   <fieldset>
   <legend>Quel est votre langage préféré ?</legend>
-  <input type="radio" v-model="radio" value="HTML" id="html">
+  <input type="radio" v-model="favoriteLang" value="HTML" id="html">
   <label for="html">HTML</label>
-  <input type="radio" v-model="radio" value="CSS" id="css">
+  <input type="radio" v-model="favoriteLang" value="CSS" id="css">
   <label for="css">CSS</label>
-  <input type="radio" v-model="radio" value="JavaScript" id="javascript">
+  <input type="radio" v-model="favoriteLang" value="JavaScript" id="javascript">
   <label for="javascript">JavaScript</label>
   </fieldset>
-  <p>Langage préféré : {{radio}}</p>
+  <p>Langage préféré : {{favoriteLang}}</p>
  </section>
 </div>
 <script> 
@@ -45,8 +47,8 @@
    return {
     text1: '',
     text2: '',
-    checkbox: [],
-    radio: ''
+    knownLang: [],
+    favoriteLang: ''
    }
  },
   methods: {
