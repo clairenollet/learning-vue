@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 1-11</title>
+ <script src="https://unpkg.com/vue@next"></script>
+ <link rel="stylesheet" href="projet1.css">
+</head>
+<body>
+ <div id="app">
+     <nav>
+         <ul>
+           <li><a href="#prevent-stop-long">1</a></li>
+           <li><a href="#prevent-stop-short">2</a></li>
+           <li><a href="#nav-forbid">3</a></li>
+           <li><a href="#click-only-once">4</a></li>
+           <li><a href="#on-enter-key">5</a></li>
+         </ul>
+     </nav>
+     <h1>L'objet $event</h1>
+     <section id="prevent-stop-long" @keydown="actionParent">
+        <input type="text" @keydown="action($event)" placeholder="Appuyez sur une touche">
+     </section>
+     <section id="prevent-stop-short">
+         <input type="text" @keydown.prevent.stop="action($event)" placeholder="Appuyez sur une touche">
+     </section>
+     <section id="nav-forbid">
+         <ul>
+            <li><a @click="navForbid" href="https://google.com" target="_blank">GOOGLE</a></li>
+            <li><a href="https://bing.com" target="_blank">BING</a></li>
+         </ul>
+     </section>
+     <section id="click-only-once"><button @click.once="action($event)">Cliquez une fois</button></section>
+     <section id="on-enter-key"><input type="text" @keyup.enter="action($event)" placeholder="Appuyez sur Entrée"></section>
+     <section id="img-resize"><img src="https://cdn.pixabay.com/photo/2017/09/17/16/35/boats-2758962_1280.jpg" :width="size" @click.left="resize(200)" @click.right="resize(100)" @click.middle="resize(400)" alt="boat"><figcaption>Click left, then right, then middle</figcaption></section>
+</div>
+<script> 
+ const app = Vue.createApp({
+     data() {
+         return {
+              size: 300
+         }
+     },
+     methods: {
+         action(ev) {
+             console.log("Evénement traité dans le input");
+             ev.preventDefault();
+             ev.stopPropagation();
+         },
+         actionParent() {
+             console.log("Evénement traité dans le parent");
+         },
+         navForbid(ev) {
+             ev.preventDefault();
+             console.log("Forbid nav to Google link");
+         },
+         resize(newSize) {
+             this.size = newSize;
+             console.log(`resize to ${newSize}`);
+         }
+     }
+ });
+ app.mount('#app');
+</script>
+</body>
+</html>
