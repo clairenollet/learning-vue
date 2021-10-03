@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>projet 1-13</title>
+ <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+ <div id="app">
+     <fieldset>
+         <input type="radio" v-model="resize" value="click" id="click" checked><label for="click">clic</label>
+         <input type="radio" v-model="resize" value="dblclick" id="doubleClick"><label for="doubleClick">double clic</label>
+     </fieldset>
+     <img src="https://cdn.pixabay.com/photo/2017/09/17/16/35/boats-2758962_1280.jpg" alt="boat" :width="size" @[resize]="resizeImg">
+</div>
+<script>
+ const app = Vue.createApp({
+     data() {
+         return {
+             resize: 'click',
+             size: 300
+         }
+     },
+     methods: {
+         resizeImg() {
+             this.size = this.size * 1.1;
+         }
+     }
+ });
+ app.mount('#app');
+</script>
+</body>
+</html>

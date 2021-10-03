@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet 1-12</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>Quel langage de programmation connaissez-vous ?</p>
+      <input type="text" v-model="oneLang" />
+      <input type="button" value="Valider" @click="addLang" />
+      <ul>
+          <li v-for="lang in langages">{{lang}}</li>
+      </ul>
+      <div v-for="(element, index) in elements">{{element}}<input type="button" value="Supprimer" @click="removeElement(index)"></div>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            oneLang: '',
+            langages: [],
+            elements: ['premier', 'deuxième', 'troisième', 'quatrième']
+          };
+        },
+        methods: {
+            addLang() {
+                this.langages.push(this.oneLang);
+            },
+            removeElement(index) {
+                this.elements.splice(index, 1);
+            }
+        }
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
