@@ -1,0 +1,53 @@
+<!-- conditional inline style -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet 1-19</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <fieldset>
+          <label for="colorText"> Couleur du texte </label>
+          <select name="color" id="colorText" v-model="color">
+            <option value="#ff0000">rouge</option>
+            <option value="#008000">vert</option>
+            <option value="#0000ff">bleu</option>
+            <option value="#000000" selected>noir</option>
+          </select>
+          <label for="sizeText"> Taille du texte </label>
+          <select name="size" id="sizeText" v-model="size">
+            <option value="16px" selected>16 px</option>
+            <option value="25px">25 px</option>
+            <option value="40px">40 px</option>
+            <option value="60px">60 px</option>
+          </select>
+        </fieldset>
+        <p :style="{ color: color, fontSize: size }">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+          tortor leo, faucibus et ornare a, hendrerit non quam. Phasellus
+          malesuada neque quis nisi auctor gravida et id nisl. Ut lacinia
+          pulvinar sapien. Cras sit amet turpis cursus, vehicula quam at,
+          faucibus enim. Nunc nisl lacus, blandit eget sapien ultricies,
+          venenatis convallis risus.
+        </p>
+      </div>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            color: "black",
+            size: "14px",
+          };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
