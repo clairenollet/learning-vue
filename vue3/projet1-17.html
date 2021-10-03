@@ -1,0 +1,55 @@
+<!-- Classe conditionnelle et manipulation d'un tableau d'objet -->
+
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet 1-17</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      .knownLang {
+        color: green;
+      }
+      li {
+        list-style-type: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <p>Quel langage de programmation connaissez-vous ?</p>
+      <input type="text" v-model="oneLang" />
+      <input type="button" value="Valider" @click="addLang" />
+      <ul>
+        <li v-for="language in languages">
+          <input type="checkbox" v-model="language.checkboxState" /><label
+            v-bind:class="{ knownLang: language.checkboxState }"
+            >{{language?.lang}}</label
+          >
+        </li>
+      </ul>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            oneLang: "",
+            languages: [],
+          };
+        },
+        methods: {
+          addLang() {
+            this.languages.push({
+              lang: this.oneLang,
+              checkboxState: false,
+            });
+            console.log(this.languages);
+          },
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

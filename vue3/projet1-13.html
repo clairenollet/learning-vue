@@ -10,16 +10,16 @@
 <body>
  <div id="app">
      <fieldset>
-         <input type="radio" v-model="resize" value="click" id="click" checked><label for="click">clic</label>
-         <input type="radio" v-model="resize" value="dblclick" id="doubleClick"><label for="doubleClick">double clic</label>
+         <input type="radio" v-model="clicktype" value="click" id="click" checked><label for="click">clic</label>
+         <input type="radio" v-model="clicktype" value="dblclick" id="dblclick"><label for="dblclick">double clic</label>
      </fieldset>
-     <img src="https://cdn.pixabay.com/photo/2017/09/17/16/35/boats-2758962_1280.jpg" alt="boat" :width="size" @[resize]="resizeImg">
+     <img src="https://cdn.pixabay.com/photo/2017/09/17/16/35/boats-2758962_1280.jpg" alt="boat" :width="size" @[clicktype]="resizeImg">
 </div>
 <script>
  const app = Vue.createApp({
      data() {
          return {
-             resize: 'click',
+             clicktype: 'click',
              size: 300
          }
      },

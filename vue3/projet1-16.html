@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet 1-16</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <p v-cloak>{{content}}</p>
+      <ul>
+        <li v-once>{{number}} avec propriété once</li>
+        <li>{{number}} sans propriété once</li>
+      </ul>
+      <button @click="this.number++">Incrémenter</button>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            content: "Interpolation avec propriété cloak",
+            number: 15,
+          };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

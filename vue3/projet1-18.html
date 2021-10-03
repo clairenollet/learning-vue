@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 1-18</title>
+ <script src="https://unpkg.com/vue@next"></script>
+ <style>
+     .bold {
+         font-weight: bold;
+     }
+     .italic {
+         font-style: italic;
+     }
+     .underline {
+         text-decoration: underline;
+     }
+ </style>
+</head>
+<body>
+ <div id="app">
+     <fieldset>
+         <input type="checkbox" v-model="boldState" id="bold"><label for="bold" class="bold">B</label>
+         <input type="checkbox" v-model="italicState" id="italic"><label for="italic" class="italic">I</label>
+         <input type="checkbox" v-model="underlineState" id="underline"><label for="underline" class="underline">U</label>
+     </fieldset>
+     <div v-bind:class="{ bold: boldState, italic: italicState, underline: underlineState }">
+         Texte qui peut être gras, italique et souligné.
+     </div>
+</div>
+<script> 
+ const app = Vue.createApp({
+     data() {
+         return {
+             boldState: false,
+             italicState: false,
+             underlineState: false
+         }
+     }
+ });
+ app.mount('#app');
+</script>
+</body>
+</html>
