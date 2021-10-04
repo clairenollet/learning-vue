@@ -1,0 +1,47 @@
+<!-- Affichage conditionnel de balises -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet 1-20</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <fieldset>
+        <legend>Quel langages de programmation connaissez-vous ?</legend>
+        <input type="text" v-model="knownLang" />
+        <input type="button" value="Ajouter" @click="addLanguage" />
+        <ul>
+          <li v-for="language in languages">
+            <input type="checkbox" v-model="language.checkState" />
+            <!-- ici, possibilité d'utiliser v-show : dans ce cas si false, la balise reste dans le dom et la propriété css est mise en display: none -->
+            <label v-if="language.checkState"
+              >{{language.name}} est coché</label
+            >
+            <label v-else>{{language.name}} est décoché</label>
+          </li>
+        </ul>
+      </fieldset>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            knownLang: "",
+            languages: [],
+          };
+        },
+        methods: {
+          addLanguage() {
+            this.languages.push({ name: this.knownLang, checkState: false });
+          },
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
