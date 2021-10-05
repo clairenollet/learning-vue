@@ -1,0 +1,55 @@
+<!-- Envoi d'une info au parent avec $emit -->
+
+<!-- composant compteur contenant un bouton, 0 au lancement, au clic, s'incrémente d'un
+insérer trois composants compteur dans la vue
+avec emit, afficher la somme des trois compteurs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet 2-14</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <code>Somme des compteurs : {{sumCounters}}</code>
+      <br />
+      <compteur @increment="sumParent"></compteur>
+      <compteur @increment="sumParent"></compteur>
+      <compteur @increment="sumParent"></compteur>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        methods: {
+          sumParent() {
+            console.log("sumParent déclenché");
+            this.sumCounters++;
+          },
+        },
+        data() {
+          return {
+            sumCounters: 0,
+          };
+        },
+      });
+      app.component("compteur", {
+        data() {
+          return {
+            counter: 0,
+          };
+        },
+        methods: {
+          addOne() {
+            this.counter++;
+            this.$emit("increment");
+            console.log("addOne déclenché");
+          },
+        },
+        template: '<button @click="addOne">{{counter}}</button>',
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

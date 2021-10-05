@@ -65,6 +65,7 @@
           </p>
         </div>
       </section>
+      <button @click="log">Log</button>
     </div>
     <script>
       const app = Vue.createApp({
@@ -255,6 +256,11 @@
               },
             ],
           };
+        },
+        methods:{
+          log() {
+            console.log(this.persons);
+          }
         }
       });
       app.mount("#app");
