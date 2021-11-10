@@ -1,0 +1,44 @@
+<!-- Les slots avec portée ou scoped slots -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 2-20</title>
+ <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+ <div id="app">
+  <employes></employes>
+ </div>
+ <script>
+  const app = Vue.createApp({
+  });
+  app.component('employes', {
+   data() {
+    return {
+     personnes: [
+      {
+       prenom: 'Pierre',
+       nom: 'Segur',
+      },
+      {
+       prenom: 'Jacques',
+       nom: 'Duom',
+      },
+     ]
+    }
+   },
+   template: `<div v-for="personne in personnes">
+               {{personne.prenom}} {{personne.nom}}
+              </div>`,
+  })
+  app.mount('#app');
+ </script>
+</body>
+
+</html>

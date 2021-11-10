@@ -1,0 +1,34 @@
+<!-- On aura undefined undefined car le this n'est pas encore accessible
+1. Ne pas utiliser des expression complexes dans des interpolations
+2. Ne pas calculer dans le modèle une expression qui utilise les données du modèle -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 2-23</title>
+ <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+ <div id="app">
+  {{contact}}
+ </div>
+ <script>
+  const app = Vue.createApp({
+   data() {
+    return {
+     email: 'test@test.com',
+     phone: '0123456789',
+     contact: 'mail : ' + this.email + ' phone : ' + this.phone,
+    }
+   }
+  });
+  app.mount('#app');
+ </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!-- Les slots nommés -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 2-18</title>
+ <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+ <div id="app">
+  <art title="Titre de l'article">
+   <template v-slot:text>
+    <p>Texte de l'article</p>
+   </template>
+  </art>
+ </div>
+ <script>
+  const app = Vue.createApp({
+  });
+  app.component('art', {
+   template: `<div><h2>{{title}}</h2><slot name="text"></slot></div>`,
+   props: ['title'],
+  })
+  app.mount('#app');
+ </script>
+</body>
+
+</html>
