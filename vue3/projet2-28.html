@@ -1,0 +1,35 @@
+<!-- Ex de transition en pure JS -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 2-28</title>
+ <style>
+  img {
+   transition: opacity 5s ease-in;
+  }
+ </style>
+ <script>
+  function cacherAfficher() {
+   let ima = document.getElementById('img');
+   let bout = document.getElementById('button');
+   if (bout.innerHTML == "Cacher") {
+    bout.innerHTML = "Afficher";
+    ima.setAttribute('style', 'opacity: 0');
+   } else {
+    bout.innerHTML = "Cacher";
+    ima.setAttribute('style', 'opacity: 1');
+   }
+  }
+ </script>
+</head>
+
+<body>
+ <button id="button" onclick="cacherAfficher();">Cacher</button>
+ <img src="https://cdn.pixabay.com/photo/2017/09/17/16/35/boats-2758962_1280.jpg" id="img">
+</body>
+
+</html>
