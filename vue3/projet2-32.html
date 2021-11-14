@@ -15,7 +15,14 @@
 
   .tr-enter-active,
   .tr-leave-active {
-   transition: opacity 1s ease-in;
+   transition: opacity 0.5s ease-in;
+  }
+
+  h1 {
+   position: absolute;
+   top: 5rem;
+   left: 5rem;
+   font-size: 3rem;
   }
  </style>
 </head>
@@ -25,7 +32,7 @@
   <button @click="index<4?index++:index=1">
    Lancer la transition
   </button>
-  <transition name="tr" mode="out-in">
+  <transition name="tr" mode="in-out">
    <h1 v-if="index == 1" key="0">Texte 1</h1>
    <h1 v-else-if="index == 2" key="1">Texte 2</h1>
    <h1 v-else-if="index == 3" key="2">Texte 3</h1>
