@@ -1,0 +1,57 @@
+<!-- Autre manière de faire : 
+mettre deux span v-if et v-else conditionné à display 
+contenant Cacher et Afficher pour libeller le bouton-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 2-29</title>
+ <script src="https://unpkg.com/vue@next"></script>
+ <style>
+  .nom-enter-from,
+  .nom-leave-to {
+   opacity: 0;
+  }
+
+  .nom-enter-active,
+  .nom-leave-active {
+   transition: opacity 5s ease-in;
+  }
+ </style>
+</head>
+
+<body>
+ <div id="app">
+  <button @click="changeDisplay">{{buttonLabel}}</button>
+  <transition name="nom">
+   <img v-show="display" src="https://cdn.pixabay.com/photo/2017/09/17/16/35/boats-2758962_1280.jpg"></img>
+  </transition>
+ </div>
+ <script>
+  const app = Vue.createApp({
+   data() {
+    return {
+     buttonLabel: "Cacher",
+     display: true,
+    }
+   },
+   methods: {
+    changeDisplay: function () {
+     if (this.display == true) {
+      this.buttonLabel = "Afficher";
+     } else {
+      this.buttonLabel = "Cacher";
+     }
+     return this.display = !this.display;
+    }
+   }
+  });
+  app.mount('#app');
+ </script>
+</body>
+
+</html>
