@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 2-32</title>
+ <script src="https://unpkg.com/vue@next"></script>
+ <style>
+  .tr-enter-from,
+  .tr-leave-to {
+   opacity: 0;
+  }
+
+  .tr-enter-active,
+  .tr-leave-active {
+   transition: opacity 1s ease-in;
+  }
+ </style>
+</head>
+
+<body>
+ <div id="app">
+  <button @click="changeTitle">
+   Lancer la transition
+  </button>
+  <transition name="tr" mode="out-in">
+   <h1 v-if="index == 0" key="0">Texte 1</h1>
+   <h1 v-else-if="index == 1" key="1">Texte 2</h1>
+   <h1 v-else-if="index == 2" key="2">Texte 3</h1>
+   <h1 v-else key="4">Texte 4</h1>
+  </transition>
+  <p>Title number {{index}}</p>
+ </div>
+ <script>
+  const app = Vue.createApp({
+   data() {
+    return {
+     index: 0,
+    }
+   },
+   methods: {
+    changeTitle() { this.index < 3 ? this.index++ : this.index = 0 },
+   }
+  });
+  app.mount('#app');
+ </script>
+</body>
+
+</html>
