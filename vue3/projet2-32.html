@@ -22,27 +22,24 @@
 
 <body>
  <div id="app">
-  <button @click="changeTitle">
+  <button @click="index<4?index++:index=1">
    Lancer la transition
   </button>
   <transition name="tr" mode="out-in">
-   <h1 v-if="index == 0" key="0">Texte 1</h1>
-   <h1 v-else-if="index == 1" key="1">Texte 2</h1>
-   <h1 v-else-if="index == 2" key="2">Texte 3</h1>
+   <h1 v-if="index == 1" key="0">Texte 1</h1>
+   <h1 v-else-if="index == 2" key="1">Texte 2</h1>
+   <h1 v-else-if="index == 3" key="2">Texte 3</h1>
    <h1 v-else key="4">Texte 4</h1>
   </transition>
-  <p>Title number {{index}}</p>
+  <p>Texte numéro {{index}}</p>
  </div>
  <script>
   const app = Vue.createApp({
    data() {
     return {
-     index: 0,
+     index: 1,
     }
    },
-   methods: {
-    changeTitle() { this.index < 3 ? this.index++ : this.index = 0 },
-   }
   });
   app.mount('#app');
  </script>
