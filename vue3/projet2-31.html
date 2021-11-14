@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Projet 2-31</title>
+ <script src="https://unpkg.com/vue@next"></script>
+ <style>
+  button {
+   border-radius: 0.5em;
+   background-color: darkcyan;
+   color: white;
+   padding: 0.7em;
+   font-family: 'Courier New', Courier, monospace;
+   font-weight: lighter;
+   font-style: italic;
+   border: none;
+   cursor: pointer;
+  }
+
+  .tr-enter-from,
+  .tr-leave-to {
+   opacity: 0;
+  }
+
+  .tr-enter-active,
+  .tr-leave-active {
+   transition: opacity 1s ease-in;
+  }
+ </style>
+</head>
+
+<body>
+ <div id="app">
+  <transition name="tr" mode="out-in">
+   <button @click="on = false" v-if="on" key="on">Premier texte</button>
+   <button @click="on = true" v-else key="off">Deuxième texte</button>
+  </transition>
+ </div>
+ <script>
+  const app = Vue.createApp({
+   data() {
+    return {
+     on: true
+    }
+   }
+  });
+  app.mount('#app');
+ </script>
+</body>
+
+</html>
