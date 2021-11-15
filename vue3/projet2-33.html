@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet 2-33</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    .tr-enter-from,
+    .tr-leave-to {
+      opacity: 0;
+    }
+
+    .tr-enter-active,
+    .tr-leave-active {
+      transition: opacity 2s ease-in;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="newFruit" id="addNewFruit">
+    <input type="submit" value="Ajouter un fruit" @click="addFruit">
+    <button @click="deleteFruit">Supprimer le premier fruit</button>
+    <transition name="tr" mode="in-out">
+      <ul>
+        <li v-for="fruit in fruits" :key="fruit">{{fruit}}</li>
+      </ul>
+    </transition>
+  </div>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          fruits: ['banane', 'pomme', 'poire'],
+          newFruit: '',
+        }
+      },
+      methods: {
+        deleteFruit() {
+          this.fruits.shift();
+        },
+        addFruit() {
+          this.newFruit != '' ? this.fruits.push(this.newFruit) : null;
+        }
+      }
+    });
+    app.mount('#app');
+  </script>
+</body>
+
+</html>
